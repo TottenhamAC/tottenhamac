@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tottenham AC — Official Website</title>
+  <meta name="description" content="Site oficial do Tottenham AC - Projetos de tecnologia, iniciativas comunitárias e desenvolvimento do ARA OS">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      /* Tottenham-inspired palette */
+      --bg: #081229;
+      --panel: #0f2036;
+      --accent: #ffffff;
+      --accent-2: #132457;
+      --accent-3: #c3002f;
+      --muted: #9fb0c9;
+      --glass: rgba(255, 255, 255, 0.03);
+      --glass-2: rgba(255, 255, 255, 0.04);
+      --radius: 14px;
+      --transition: all 0.3s ease;
+      --card-bg: rgba(255, 255, 255, 0.02);
+      --card-border: rgba(255, 255, 255, 0.03);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(800px 300px at 10% 10%, rgba(19, 36, 87, 0.12), transparent 8%),
+                  linear-gradient(180deg, var(--bg) 0%, #051025 60%);
+      color: var(--accent);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Header aprimorado */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: var(--transition);
+      background: transparent;
+    }
+
+    header.scrolled {
+      backdrop-filter: blur(10px) saturate(1.8);
+      background: linear-gradient(180deg, rgba(2, 12, 25, 0.85), rgba(2, 12, 25, 0.7));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 0.7rem 2rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .logo img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(2, 8, 20, 0.65), 0 1px 0 rgba(255, 255, 255, 0.02) inset;
+      transition: transform 0.3s ease;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    }
+
+    .logo:hover img {
+      transform: rotate(-5deg) scale(1.05);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text .title {
+      font-weight: 800;
+      font-family: Oswald, Inter;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text .subtitle {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* Menu Hamburguer */
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: var(--accent);
+      border-radius: 3px;
+      transition: var(--transition);
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    /* Navegação desktop - agora oculta por padrão */
+    .desktop-nav {
+      display: none;
+    }
+
+    /* Navegação mobile */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 350px;
+      height: 100vh;
+      background: var(--panel);
+      z-index: 1000;
+      padding: 5rem 2rem 2rem;
+      transition: right 0.4s ease;
+      box-shadow: -5px 0 25px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mobile-nav.active {
+      right: 0;
+    }
+
+    .mobile-nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      transition: var(--transition);
+      display: block;
+      border-left: 3px solid transparent;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.03);
+      border-left-color: var(--accent-2);
+    }
+
+    .home-icon {
+      display: none;
+      color: var(--accent-2);
+    }
+
+    .home-icon.visible {
+      display: flex;
+    }
+
+    .close-nav {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: transparent;
+      border: none;
+      color: var(--accent);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero section aprimorada */
+    .hero {
+      padding-top: 7rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(800px 400px at 80% 20%, rgba(19, 36, 87, 0.15), transparent 15%),
+                  linear-gradient(180deg, rgba(4, 12, 25, 0.7), rgba(3, 8, 18, 0.95));
+      z-index: 0;
+    }
+
+    .particles-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      animation: float 15s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--accent-2);
+      font-weight: 800;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      background: rgba(19, 36, 87, 0.2);
+      border-radius: 20px;
+    }
+
+    .hero h1 {
+      font-family: Oswald, Inter;
+      margin: 0.5rem 0 1.5rem;
+      font-size: 3.2rem;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .hero p.lead {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 90%;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.9rem 1.8rem;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn--primary {
+      background: var(--accent-2);
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(19, 36, 87, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .btn--primary:hover {
+      background: #1a3185;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(19, 36, 87, 0.35);
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn--ghost:hover {
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn i {
+      font-size: 1.1rem;
+    }
+
+    .feature-highlight {
+      margin-top: 2rem;
+      padding: 1rem;
+      border-left: 3px solid var(--accent-2);
+      background: rgba(19, 36, 87, 0.1);
+      border-radius: 0 8px 8px 0;
+      text-align: left;
+      max-width: 600px;
+      margin: 2rem auto 0;
+    }
+
+    .feature-highlight strong {
+      color: var(--accent);
+    }
+
+    /* Sections aprimoradas */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .section-header h2 {
+      font-family: Oswald, Inter;
+      font-size: 2.2rem;
+      margin: 0 0 1rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--accent-2);
+      border-radius: 3px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Content sections */
+    .content-section {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.01));
+      border-radius: 14px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    .content-section h3 {
+      font-family: Oswald, Inter;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+    }
+
+    .content-section p {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .content-section ul, .content-section ol {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .content-section li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .content-section strong {
+      color: var(--accent);
+    }
+
+    /* Project cards */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 1100px) {
+      .project-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 30px 22px;
+      border-radius: var(--radius);
+      text-align: center;
+      min-height: 220px;
+      color: inherit;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      box-shadow: 0 6px 20px rgba(2, 6, 20, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+      cursor: pointer;
+    }
+
+    .project-card:focus,
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px rgba(2, 6, 20, 0.6);
+      border-color: rgba(255, 255, 255, 0.06);
+      outline: none;
+    }
+
+    .project-image {
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.14));
+    }
+
+    .project-image img {
+      max-width: 46px;
+      max-height: 46px;
+      display: block;
+      margin: auto;
+    }
+
+    .project-card h3 {
+      margin: 6px 0 8px;
+      font-size: 1.1rem;
+      letter-spacing: 0.6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .project-card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+      max-width: 320px;
+    }
+
+    /* badge "Em Desenvolvimento." */
+    .badge-dev {
+      display: inline-block;
+      background: #FF9800;
+      color: #0b0b0b;
+      font-size: 0.72rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-weight: 600;
+      margin-left: 6px;
+    }
+
+    /* Tech grid */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 1100px) {
+      .tech-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 800px) {
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tech-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 30px 22px;
+      border-radius: var(--radius);
+      text-align: center;
+      min-height: 220px;
+      color: inherit;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      box-shadow: 0 6px 20px rgba(2, 6, 20, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+
+    .tech-card:focus,
+    .tech-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px rgba(2, 6, 20, 0.6);
+      border-color: rgba(255, 255, 255, 0.06);
+      outline: none;
+    }
+
+    .tech-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.14));
+      font-size: 32px;
+    }
+
+    .tech-card h3 {
+      margin: 6px 0 12px;
+      font-size: 1.1rem;
+      letter-spacing: 0.6px;
+    }
+
+    .tech-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+      max-width: 320px;
+    }
+
+    /* Footer aprimorado */
+    footer {
+      background: linear-gradient(180deg, rgba(3, 8, 18, 0.95), #050c1c);
+      padding: 4rem 2rem 2rem;
+      margin-top: 5rem;
+      position: relative;
+      text-align: center;
+    }
+
+    footer:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo img {
+      width: 70px;
+      height: 70px;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
+    .footer-text {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--accent);
+      transition: var(--transition);
+      font-size: 1.5rem;
+      text-decoration: none;
+      border-bottom: none;
+    }
+
+    .social-links a:hover {
+      background: var(--accent-2);
+      transform: translateY(-3px);
+      text-decoration: none;
+      border-bottom: none;
+    }
+
+    .copyright {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    /* Responsividade */
+    @media (min-width: 992px) {
+      .menu-toggle {
+        display: none;
+      }
+      
+      .desktop-nav {
+        display: flex;
+        gap: 2rem;
+      }
+      
+      .desktop-nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+      }
+      
+      .desktop-nav a:hover {
+        color: var(--accent);
+      }
+      
+      .mobile-nav {
+        display: none;
+      }
+      
+      .hero__content {
+        grid-template-columns: 1fr 1fr;
+        text-align: left;
+      }
+      
+      .hero p.lead {
+        margin: 0 0 2rem;
+      }
+      
+      .cta-group {
+        justify-content: flex-start;
+      }
+      
+      .feature-highlight {
+        margin: 2rem 0 0;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero__content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .hero p.lead {
+        margin: 0 auto 2rem;
+      }
+
+      .cta-group {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+
+      header.scrolled {
+        padding: 0.7rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .section {
+        padding: 3rem 1rem;
+      }
+
+      .content-section {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .content-section {
+        padding: 1rem;
+      }
+    }
+
+    /* Estilos adicionais para a screenshot */
+    .screenshot-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .screenshot-container img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .compatibility-note {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* acessibilidade: foco pelo teclado */
+    .project-card:focus,
+    .tech-card:focus {
+      box-shadow: 0 0 0 4px rgba(139, 43, 255, 0.15), 0 18px 40px rgba(2, 6, 20, 0.6);
+    }
+
+    /* garantir que SVGs e imagens fiquem centralizados */
+    .project-image svg,
+    .tech-icon svg {
+      display: block;
+      margin: auto;
+    }
+
+    /* manter comportamento do botão voltar/ver detalhes parecido com resto do site */
+    .cta-group {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="logo" data-section="inicio">
+      <img src="tottenham.png" alt="Tottenham AC Logo" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%3E%3Crect%20width%3D%2260%22%20height%3D%2260%22%20fill%3D%22%23132457%22%20%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%20font-size%3D%2210%22%3ETOTTENHAM%3C%2Ftext%3E%3C%2Fsvg%3E'">
+      <div class="logo-text">
+        <span class="title">TOTTENHAM AC</span>
+        <span class="subtitle">Tecnologia e Inovação</span>
+      </div>
+    </a>
+
+    <nav class="desktop-nav">
+      <a href="#" data-section="inicio">Início</a>
+      <a href="#" data-section="sobre">Sobre</a>
+      <a href="#" data-section="projetos">Projetos</a>
+      <a href="#" data-section="tecnologia">Tecnologia</a>
+      <a href="#" data-section="comunidade">Comunidade</a>
+      <a href="#" data-section="contato">Contato</a>
+    </nav>
+
+    <div class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav class="mobile-nav">
+      <button class="close-nav">
+        <i class="fas fa-times"></i>
+      </button>
+      <a href="#" class="home-icon" data-section="inicio">
+        <i class="fas fa-home"></i> Início
+      </a>
+      <a href="#" data-section="sobre">Sobre</a>
+      <a href="#" data-section="projetos">Projetos</a>
+      <a href="#" data-section="tecnologia">Tecnologia</a>
+      <a href="#" data-section="comunidade">Comunidade</a>
+      <a href="#" data-section="contato">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Seção Inicial (Hero) - Atualizada com screenshot -->
+    <section class="hero section active" id="inicio" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true"></div>
+
+      <div class="particles-container" aria-hidden="true">
+        <div class="particle" style="top: 20%; left: 15%; width: 4px; height: 4px; animation-delay: 0s;"></div>
+        <div class="particle" style="top: 60%; left: 75%; width: 6px; height: 6px; animation-delay: 1s;"></div>
+        <div class="particle" style="top: 40%; left: 50%; width: 3px; height: 3px; animation-delay: 2s;"></div>
+        <div class="particle" style="top: 80%; left: 30%; width: 5px; height: 5px; animation-delay: 3s;"></div>
+        <div class="particle" style="top: 30%; left: 85%; width: 4px; height: 4px; animation-delay: 4s;"></div>
+      </div>
+
+      <div class="hero__content">
+        <div class="hero__text">
+          <span class="eyebrow">TOTTENHAM AC</span>
+          <h1 id="hero-title">Sistema Operacional <span style="color: var(--accent-2);">ARA OS</span></h1>
+
+          <!-- Texto simplificado -->
+          <p class="lead">
+            Uma plataforma móvel leve, segura e altamente configurável, construída para entregar
+            performance e privacidade sem compromissos.
+          </p>
+
+          <!-- Call to action -->
+          <div class="cta-group">
+            <!-- Baixar => abre o Github em nova aba -->
+            <a href="https://github.com/allyxzs/ARA-OS-CC-version" class="btn btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Baixar ARA OS (abre no GitHub)">
+              <i class="fas fa-download" aria-hidden="true"></i> Baixar ARA OS
+            </a>
+          </div>
+
+          <div class="feature-highlight" role="note">
+            <strong>Recursos exclusivos:</strong> interface intuitiva · alto desempenho · atualizações de segurança · suporte a apps nativos.
+          </div>
+        </div>
+
+        <!-- Screenshot do ARA OS -->
+        <div class="screenshot-container">
+          <img src="screenshot1.png" alt="Screenshot do ARA OS mostrando a interface do usuário">
+        </div>
+        
+        <div class="compatibility-note">
+          Compatível com: Android-like apps, PWAs e aplicativos nativos
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Sobre -->
+    <section class="section" id="sobre">
+      <div class="section-header">
+        <h2>Sobre</h2>
+      </div>
+
+      <div class="content-section">
+        <p>O <strong>Tottenham AC</strong> é muito mais do que um clube: somos uma comunidade apaixonada por <strong>programação, tecnologia e inovação</strong>. Nosso propósito é reunir pessoas criativas que desejam aprender, compartilhar conhecimento e construir projetos que façam a diferença.</p>
+        
+        <p>Aqui, cada integrante encontra espaço para:</p>
+        
+        <ul>
+          <li><strong>Aprender e ensinar</strong><br>
+          Desde os primeiros passos na programação até conceitos avançados, o Tottenham AC é um ambiente colaborativo onde todos crescem juntos.</li>
+          
+          <li><strong>Criar e experimentar</strong><br>
+          Trabalhamos com linguagens diversas: <strong>Python, JavaScript, C, HTML/CSS</strong> e muito mais. Acreditamos que cada código escrito é uma nova oportunidade de evoluir.</li>
+          
+          <li><strong>Construir projetos reais</strong><br>
+          Não ficamos apenas na teoria. O clube incentiva desafios práticos, hackathons internos e desenvolvimento de soluções criativas para problemas do dia a dia.</li>
+          
+          <li><strong>Colaboração e comunidade</strong><br>
+          Valorizamos o espíritu de equipe. Programar em grupo fortalece nossas habilidades e nos prepara para enfrentar qualquer desafio no mundo da tecnologia.</li>
+        </ul>
+
+        <h3>🎯 Nossa missão</h3>
+        <p>Transformar curiosidade em conhecimento, conhecimento em código, e código em <strong>impacto real</strong>.</p>
+        
+        <h3>🌐 Nossa visão</h3>
+        <p>Ser referência como clube de programação que forma mentes inovadoras e colaborativas.</p>
+        
+        <h3>🔑 Nossos valores</h3>
+        <ul>
+          <li><strong>Aprendizado contínuo</strong></li>
+          <li><strong>Trabalho em equipe</strong></li>
+          <li><strong>Inovação constante</strong></li>
+          <li><strong>Paixão pela tecnologia</strong></li>
+        </ul>
+        
+        <p><strong>Onde a paixão pela programação encontra a força do coletivo.</strong></p>
+        
+        <p>O Tottenham AC é um clube dedicado à programação e à tecnologia.
+        Aqui, unimos aprendizado, prática e colaboração para criar soluções criativas, desenvolver projetos reais e formar uma comunidade apaixonada por inovação.</p>
+        
+        <p>👉 Se você gosta de aprender, compartilhar conhecimento e programar em equipe, o Tottenham AC é o seu lugar!</p>
+      </div>
+    </section>
+
+    <!-- Seção Projetos (Listagem) -->
+    <section class="section" id="projetos">
+      <div class="section-header">
+        <h2>Projetos</h2>
+        <p>Conheça nossos projetos em desenvolvimento</p>
+      </div>
+
+      <div class="project-grid">
+        <!-- ARA OS -->
+        <div class="project-card" data-project="araos" role="button" tabindex="0" aria-pressed="false">
+          <div class="project-image">
+            <img src="araos1.png" alt="ARA OS Project" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23132457%22%20%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%20font-size%3D%2216%22%3EARA%20OS%3C%2Ftext%3E%3C%2Fsvg%3E'">
+          </div>
+          <h3>ARA OS</h3>
+          <p>Sistema operacional móvel com IA integrada para performance excepcional e segurança de ponta.</p>
+          <a href="#" class="btn btn--primary" data-section="projetos-araos">Ver detalhes</a>
+        </div>
+
+        <!-- ZEUZ OS (novo) -->
+        <div class="project-card" data-project="zeuz" role="button" tabindex="0" aria-pressed="false">
+          <div class="project-image">
+            <img src="zeuz.png" alt="ZEUZ OS Project" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%20viewBox%3D%220%200%20200%20200%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23132457%22%20%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%20font-size%3D%2216%22%3EZEUZ%20OS%3C%2Ftext%3E%3C%2Fsvg%3E'">
+          </div>
+          <h3>
+            ZEUZ OS
+            <span class="badge-dev" aria-hidden="true">Em Desenvolvimento.</span>
+          </h3>
+          <p>ZEUZ OS é uma inteligência artificial voltada para monitoramento inteligente e gestão de dados em tempo real.</p>
+          <a href="#" class="btn btn--primary" data-section="projetos-zeuz">Ver detalhes</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Projetos ARA OS (Detalhe) -->
+    <section class="section" id="projetos-araos" style="display:none;">
+      <div class="section-header">
+        <h2>ARA OS</h2>
+        <p>Sistema operacional inteligente com assistente de IA</p>
+      </div>
+
+      <div class="content-section">
+        <h3>Entenda como funciona a ARA OS</h3>
+
+        <p>A ARA OS é uma plataforma inteligente que funciona como um sistema operacional assistido por IA, projetado para monitorar, automatizar e interagir com o ambiente digital de forma prática e intuitiva. Diferente de softwares tradicionais de monitoramento or simples chats, a ARA OS integra em um só lugar painéis de desempenho, ferramentas de automação, chat inteligente e geração de código, com uma interface visual moderna e acessível.</p>
+
+        <p>No centro de tudo está A ARA, a assistente virtual que dá vida ao sistema. Sempre se referindo no feminino, A ARA é quem conversa com o usuário, aplica regras de automação, sugere soluções e gera códigos sob demanda. Ela funciona como uma "ponte" entre você e todos os módulos da ARA OS.</p>
+
+        <div class="cta-group">
+          <a href="#" class="btn btn--primary">
+            <i class="fas fa-download"></i> Baixar ARA OS
+          </a>
+          <a href="#" class="btn btn--ghost" data-section="projetos">
+            <i class="fas fa-arrow-left"></i> Voltar para projetos
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Projetos ZEUZ OS (Detalhe) -->
+    <section class="section" id="projetos-zeuz" style="display:none;">
+      <div class="section-header">
+        <h2>ZEUZ OS</h2>
+        <p>Plataforma de monitoramento inteligente e gestão de dados em tempo real</p>
+      </div>
+
+      <div class="content-section">
+        <h3>Sobre o ZEUZ OS</h3>
+
+        <p><strong>ZEUZ OS</strong> é uma inteligência artificial voltada para monitoramento inteligente e gestão de dados em tempo real. Ele combina tecnologia de análise automatizada, visualização interativa e alertas inteligentes, oferecendo um painel moderno e intuitivo para acompanhar métricas, desempenho e notificações do sistema.</p>
+
+        <p>Construído sobre uma arquitetura que une Flask (API), SQLite (armazenamento de dados) e PyWebView (interface desktop), o ZEUZ OS oferece uma experiência fluida, reunindo o melhor do ambiente web em uma aplicação de fácil acesso.</p>
+
+        <p><strong>Entre seus principais recursos estão:</strong></p>
+        <ul>
+          <li>Métricas em tempo real: acompanhamento de visualizações, usuários, mensagens e conexões.</li>
+          <li>Saúde do sistema: gráficos interativos de CPU, memória, disco e rede.</li>
+          <li>Notificações inteligentes: alertas críticos, avisos de desempenho e informações importantes, sempre atualizados.</li>
+          <li>Visualização global: relatórios sobre acessos por países e visitantes por hora.</li>
+          <li>Automação de alertas: geração dinâmica de notificações para simulações ou integrações externas.</li>
+        </ul>
+
+        <p>Mais do que um simples dashboard, o ZEUZ OS atua como um assistente digital, capaz de fornecer insights, prever situações críticas e apoiar a tomada de decisão.</p>
+
+        <div class="cta-group">
+          <a href="#" class="btn btn--primary" aria-disabled="true">
+            <i class="fas fa-download"></i> Em breve
+          </a>
+          <a href="#" class="btn btn--ghost" data-section="projetos">
+            <i class="fas fa-arrow-left"></i> Voltar para projetos
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Tecnologia -->
+    <section id="tecnologia" class="section">
+      <div class="section-header">
+        <h2>Tecnologias</h2>
+        <p>Linguagens e ferramentas que utilizamos em nossos projetos</p>
+      </div>
+
+      <div class="tech-grid">
+        <!-- Python -->
+        <a class="tech-card" href="https://www.python.org/" target="_blank" rel="noopener" aria-label="Abrir site oficial Python">
+          <div class="tech-icon" style="color:#3776AB;">
+            <i class="fab fa-python"></i>
+          </div>
+          <h3>Python</h3>
+          <p>Linguagem versátil para automação, análise de dados, IA e desenvolvimento web.</p>
+        </a>
+        
+        <!-- JavaScript (MDN) -->
+        <a class="tech-card" href="https://developer.mozilla.org/pt-BR/docs/Web/JavaScript" target="_blank" rel="noopener" aria-label="Abrir documentação JavaScript no MDN">
+          <div class="tech-icon" style="color:#F7DF1E;">
+            <i class="fab fa-js-square"></i>
+          </div>
+          <h3>JavaScript</h3>
+          <p>Linguagem essencial para desenvolvimento web frontend e backend com Node.js.</p>
+        </a>
+
+        <!-- HTML/CSS (MDN) -->
+        <a class="tech-card" href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank" rel="noopener" aria-label="Abrir documentação HTML no MDN">
+          <div class="tech-icon" style="color:#E34F26;">
+            <i class="fab fa-html5"></i>
+          </div>
+          <h3>HTML/CSS</h3>
+          <p>Base para criação de interfaces web modernas e responsivas.</p>
+        </a>
+        
+        <!-- C++ (substituído por SVG oficial) -->
+        <a class="tech-card" href="https://isocpp.org/" target="_blank" rel="noopener" aria-label="Abrir site oficial C++ (isocpp.org)">
+          <div class="tech-icon cxx-icon" aria-hidden="true">
+            <svg viewBox="0 0 100 100" width="46" height="46" role="img" aria-label="C++ logo" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <!-- hexágono azul -->
+              <polygon points="50,5 88,25 88,75 50,95 12,75 12,25" fill="#00599C"/>
+              <!-- texto C++ -->
+              <text x="50" y="62" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="32" fill="#ffffff">C++</text>
+            </svg>
+          </div>
+          <h3>C++</h3>
+          <p>Linguagem de alto desempenho para desenvolvimento de sistemas e aplicações complexas.</p>
+        </a>
+        
+        <!-- NodeJS -->
+        <a class="tech-card" href="https://nodejs.org/" target="_blank" rel="noopener" aria-label="Abrir site oficial Node.js" style="--icon-color:#339933;">
+          <div class="tech-icon" style="color:var(--icon-color);">
+            <i class="fab fa-node-js"></i>
+          </div>
+          <h3>NodeJS</h3>
+          <p>Ambiente de execução JavaScript server-side para construir aplicações de rede escaláveis.</p>
+        </a>
+
+        <!-- N8N -->
+        <a class="tech-card" href="https://n8n.io/" target="_blank" rel="noopener" aria-label="Abrir site oficial n8n">
+          <div class="tech-icon n8n-icon" aria-hidden="true">
+            <svg viewBox="0 0 64 64" width="46" height="46" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="N8N">
+              <g fill="none" stroke="#8B2BFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="16" cy="24" r="3" fill="#8B2BFF"/>
+                <circle cx="32" cy="40" r="3" fill="#8B2BFF"/>
+                <circle cx="48" cy="24" r="3" fill="#8B2BFF"/>
+                <path d="M19 25 L30 37 L45 25" />
+              </g>
+            </svg>
+          </div>
+          <h3>N8N</h3>
+          <p>Plataforma de automação de fluxo de trabalho para conectar diferentes aplicações e serviços.</p>
+        </a>
+
+        <!-- Git -->
+        <a class="tech-card" href="https://git-scm.com/" target="_blank" rel="noopener" aria-label="Abrir site oficial Git">
+          <div class="tech-icon" style="color:#F05032;">
+            <i class="fab fa-git-alt"></i>
+          </div>
+          <h3>Git</h3>
+          <p>Sistema de controle de versão distribuído essencial para colaboração e gerenciamento de código.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Seção Comunidade -->
+    <section class="section" id="comunidade">
+      <div class="section-header">
+        <h2>Comunidade</h2>
+        <p>Junte-se à nossa comunidade de entusiastas de tecnologia</p>
+      </div>
+
+      <div class="content-section">
+        <h3>Comunidade Tottenham AC</h3>
+        
+        <p>No Tottenham AC, acreditamos que a força da programação está nas pessoas. Nossa comunidade é formada por estudantes, iniciantes e profissionais apaixonados por tecnologia, todos unidos pelo mesmo objetivo: aprender, ensinar e crescer juntos.</p>
+        
+        <p>Aqui, cada membro encontra espaço para:</p>
+        
+        <ul>
+          <li>Compartilhar conhecimento em diferentes linguagens e ferramentas.</li>
+          <li>Colaborar em projetos coletivos e desafios práticos.</li>
+          <li>Ajudar e ser ajudado, fortalecendo o espírito de equipe.</li>
+          <li>Trocar experiências que vão além do código, criar laços reais.</li>
+        </ul>
+        
+        <p>O que torna a nossa comunidade especial é a diversidade de ideias e a colaboração constante. No Tottenham AC, não importa se você está dando os primeiros passos ou já é experiente: sempre haverá espaço para você construir, aprender e inspirar.</p>
+        
+        <p>💡 Juntos, transformamos linhas de código em conexões, e conexões em inovação.</p>
+        
+        <p>✨ No Tottenham AC, cada programador faz parte de algo maior: uma comunidade que transforma conhecimento em colaboração e colaboração em inovação. ✨</p>
+        
+        <h3>JUNTE-SE A NÓS EM:</h3>
+        
+        <div class="cta-group">
+          <a href="https://discord.gg/tNRR7tx6MN" class="btn btn--primary" target="_blank">
+            <i class="fab fa-discord"></i> Discord
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section class="section" id="contato">
+      <div class="section-header">
+        <h2>Contato</h2>
+        <p>Entre em contato conosco</p>
+      </div>
+
+      <div class="content-section">
+        <h3>📬 Contato — Tottenham AC</h3>
+        
+        <p>Quer falar com a gente? O Tottenham AC está sempre aberto a novas ideias, colaborações e pessoas que compartilham da nossa paixão por programação.</p>
+        
+        <p>💡 Seja para tirar dúvidas, propor parcerias, participar de projetos ou simplesmente trocar experiências, sua mensagem é muito bem-vinda.</p>
+        
+        <p>Você pode nos contatar por:</p>
+        
+        <ul>
+          <li>📧 E-mail: <a href="mailto:tottenhamacbr@gmail.com">tottenhamacbr@gmail.com</a></li>
+          <li>📝 Formulário de contato: preencha com sua mensagem e responderemos o mais breve possível.</li>
+        </ul>
+        
+        <p>👉 No Tottenham AC, cada contato is uma oportunidade de criar novas conexões e construir juntos o futuro da tecnologia.</p>
+        
+        <div class="cta-group">
+          <a href="mailto:tottenhamacbr@gmail.com" class="btn btn--primary">
+            <i class="fas fa-envelope"></i> Enviar e-mail
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="tottenham.png" alt="Tottenham AC" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2270%22%20height%3D%2270%22%20viewBox%3D%220%200%2070%2070%22%3E%3Crect%20width%3D%2270%22%20height%3D%2270%22%20fill%3D%22%23132457%22%20%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%20font-size%3D%2210%22%3ETOTTENHAM%3C%2Ftext%3E%3C%2Fsvg%3E'">
+        <p class="footer-text">TOTTENHAM AC 2025</p>
+        <p class="footer-text">FIQUE POR DENTRO EM NOSSAS REDES SOCIAIS:</p>
+        
+        <div class="social-links">
+          <a href="https://www.instagram.com/tottenhamacbr?igsh=MXNsN2NoeTZnMGxjag=="><i class="fab fa-instagram"></i></a>
+          <a href="https://discord.gg/tNRR7tx6MN" target="_blank"><i class="fab fa-discord"></i></a>
+          <a href="https://github.com/TottenhamAC"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        &copy; 2025 Tottenham AC. Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Menu hamburguer toggle
+      const menuToggle = document.querySelector('.menu-toggle');
+      const mobileNav = document.querySelector('.mobile-nav');
+      const closeNav = document.querySelector('.close-nav');
+      const homeIcon = document.querySelector('.home-icon');
+      
+      menuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+        document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+      });
+      
+      closeNav.addEventListener('click', function() {
+        menuToggle.classList.remove('active');
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+      
+      // Header scroll effect
+      const header = document.querySelector('header');
+      
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+      
+      // Section navigation
+      const sections = document.querySelectorAll('.section');
+      const navLinks = document.querySelectorAll('a[data-section]');
+      const projectCards = document.querySelectorAll('.project-card');
+      const projectLinks = document.querySelectorAll('a[data-section]');
+      
+      function showSection(sectionId) {
+        sections.forEach(section => {
+          section.classList.remove('active');
+        });
+        
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+          targetSection.classList.add('active');
+          window.scrollTo(0, 0);
+          
+          // Mostrar ou esconder o ícone de casa
+          if (sectionId === 'inicio') {
+            homeIcon.classList.remove('visible');
+          } else {
+            homeIcon.classList.add('visible');
+          }
+        }
+      }
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const sectionId = this.getAttribute('data-section');
+          showSection(sectionId);
+          
+          // Close mobile nav if open
+          if (mobileNav.classList.contains('active')) {
+            menuToggle.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = 'auto';
+          }
+        });
+      });
+      
+      // Project card navigation
+      projectCards.forEach(card => {
+        card.addEventListener('click', function() {
+          const projectId = this.getAttribute('data-project');
+          showSection('projetos-' + projectId);
+        });
+      });
+      
+      // Close mobile nav when clicking on a link
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+      
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          menuToggle.classList.remove('active');
+          mobileNav.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        });
+      });
+
+      // JS: navegação simples entre listagem e detalhes
+      (function(){
+        // função que mostra a section e esconde as outras relacionadas a projetos
+        function showProjectSection(idToShow){
+          // se idToShow for "projetos", mostramos apenas a listagem
+          const all = ['projetos','projetos-araos','projetos-zeuz'];
+          all.forEach(id => {
+            const el = document.getElementById(id);
+            if(!el) return;
+            el.style.display = (id === idToShow) ? '' : 'none';
+          });
+          
+          // rolar suavemente para o topo da seção
+          const target = document.getElementById(idToShow);
+          if(target){
+            setTimeout(()=> target.scrollIntoView({behavior:'smooth', block:'start'}), 80);
+          }
+        }
+        
+        // abrir detalhes ao clicar no card
+        document.querySelectorAll('.project-card').forEach(card => {
+          card.addEventListener('click', function(e){
+            // se o clique veio de um link interno (Ver detalhes), permita o handler separado
+            const project = card.getAttribute('data-project');
+            if(project){
+              showProjectSection('projetos-' + project);
+            }
+          });
+          
+          // permitir abertura com ENTER
+          card.addEventListener('keydown', function(e){
+            if(e.key === 'Enter' || e.key === ' '){
+              e.preventDefault();
+              const project = card.getAttribute('data-project');
+              if(project) showProjectSection('projetos-' + project);
+            }
+          });
+        });
+        
+        // botões "Ver detalhes" e "Voltar para projetos"
+        document.querySelectorAll('[data-section]').forEach(btn => {
+          btn.addEventListener('click', function(e){
+            e.preventDefault();
+            const id = btn.getAttribute('data-section');
+            if(id) showProjectSection(id);
+          });
+        });
+        
+        // inicial: garantir que só a listagem esteja visível
+        showProjectSection('projetos');
+      })();
+    });
+  </script>
+</body>
+</html>
