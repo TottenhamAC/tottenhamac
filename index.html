@@ -888,53 +888,157 @@
   </header>
 
   <main>
-    <!-- Seção Inicial (Hero) - Atualizada com screenshot -->
-    <section class="hero section active" id="inicio" aria-labelledby="hero-title">
-      <div class="hero__bg" aria-hidden="true"></div>
+<!-- Seção Inicial (Hero) - Atualizada com screenshot -->
+<section class="hero section active" id="inicio" aria-labelledby="hero-title">
+  <div class="hero__bg" aria-hidden="true"></div>
 
-      <div class="particles-container" aria-hidden="true">
-        <div class="particle" style="top: 20%; left: 15%; width: 4px; height: 4px; animation-delay: 0s;"></div>
-        <div class="particle" style="top: 60%; left: 75%; width: 6px; height: 6px; animation-delay: 1s;"></div>
-        <div class="particle" style="top: 40%; left: 50%; width: 3px; height: 3px; animation-delay: 2s;"></div>
-        <div class="particle" style="top: 80%; left: 30%; width: 5px; height: 5px; animation-delay: 3s;"></div>
-        <div class="particle" style="top: 30%; left: 85%; width: 4px; height: 4px; animation-delay: 4s;"></div>
-      </div>
+  <div class="particles-container" aria-hidden="true">
+    <div class="particle" style="top: 20%; left: 15%; width: 4px; height: 4px; animation-delay: 0s;"></div>
+    <div class="particle" style="top: 60%; left: 75%; width: 6px; height: 6px; animation-delay: 1s;"></div>
+    <div class="particle" style="top: 40%; left: 50%; width: 3px; height: 3px; animation-delay: 2s;"></div>
+    <div class="particle" style="top: 80%; left: 30%; width: 5px; height: 5px; animation-delay: 3s;"></div>
+    <div class="particle" style="top: 30%; left: 85%; width: 4px; height: 4px; animation-delay: 4s;"></div>
+  </div>
 
-      <div class="hero__content">
-        <div class="hero__text">
-          <span class="eyebrow">TOTTENHAM AC</span>
-          <h1 id="hero-title">Sistema Operacional <span style="color: var(--accent-2);">ARA OS</span></h1>
+  <div class="hero__content">
+    <div class="hero__text">
+      <span class="eyebrow">TOTTENHAM AC</span>
 
-          <!-- Texto simplificado -->
-          <p class="lead">
-            Uma plataforma móvel leve, segura e altamente configurável, construída para entregar
-            performance e privacidade sem compromissos.
-          </p>
+      <!-- ==== INÍCIO: BLOCO AELIA ADICIONADO (colocado acima do título e do texto existente) ==== -->
+      <div class="aelia-card" role="region" aria-label="AELIA - descrição e contagem regressiva">
+        <div class="aelia-row">
+          <div class="aelia-text">
+            <h2 class="aelia-title">⚙️ AELIA — O Cérebro da ARA</h2>
 
-          <!-- Call to action -->
-          <div class="cta-group">
-            <!-- Baixar => abre o Github em nova aba -->
-            <a href="https://github.com/allyxzs/ARA-OS-CC-version" class="btn btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Baixar ARA OS (abre no GitHub)">
-              <i class="fas fa-download" aria-hidden="true"></i> Baixar ARA OS
-            </a>
+            <p class="aelia-desc">
+              <strong>AELIA</strong> (Advanced Enhanced Language Intelligence for ARA) é o processador
+              de linguagem natural que dá vida à ARA OS. Ela é o núcleo de inteligência da plataforma,
+              responsável por interpretar comandos, responder perguntas, gerar código e conduzir conversas
+              de forma natural.
+            </p>
+
+            <h3 class="aelia-sub">✨ O que é a AELIA?</h3>
+            <ul class="aelia-list">
+              <li>Motor de diálogo da ARA OS.</li>
+              <li>Capaz de compreender contexto, histórico de conversa e informações do sistema.</li>
+              <li>Evolutiva: a cada versão, recebe melhorias em desempenho, memória e precisão.</li>
+              <li>Construída para ser local e confiável, mas expansível para integrações externas.</li>
+            </ul>
+
+            <h3 class="aelia-sub">🚀 Papel da AELIA na ARA OS</h3>
+            <ul class="aelia-list">
+              <li>Traduz dados técnicos em respostas humanas.</li>
+              <li>Gera código sob demanda a partir de descrições simples.</li>
+              <li>Atua como núcleo de automação e suporte técnico.</li>
+            </ul>
+
+            <!-- Contador (acima do CTA ou onde preferir) -->
+            <div class="countdown" aria-live="polite" aria-atomic="true" id="aelia-countdown" title="Contagem regressiva para 23 de setembro às 19:30 (horário de São Paulo)">
+              <div class="countdown-label">Faltam para terça-feira, 23 de setembro — 19:30</div>
+              <div class="countdown-time" id="countdown-time">—:—:—:—</div>
+            </div>
           </div>
 
-          <div class="feature-highlight" role="note">
-            <strong>Recursos exclusivos:</strong> interface intuitiva · alto desempenho · atualizações de segurança · suporte a apps nativos.
+          <div class="aelia-image" aria-hidden="false">
+            <img src="araos4.png" alt="Imagem representativa da AELIA e ARA OS" />
           </div>
         </div>
-
-        <!-- Screenshot do ARA OS -->
-        <div class="screenshot-container">
-          <img src="screenshot1.png" alt="Screenshot do ARA OS mostrando a interface do usuário">
-        </div>
-        
-        <div class="compatibility-note">
-          Compatível com: Android-like apps, PWAs e aplicativos nativos
-        </div>
       </div>
-    </section>
+      <!-- ==== FIM: BLOCO AELIA ADICIONADO ==== -->
 
+      <h1 id="hero-title">Sistema Operacional <span style="color: var(--accent-2);">ARA OS</span></h1>
+
+      <!-- Texto simplificado -->
+      <p class="lead">
+        Uma plataforma móvel leve, segura e altamente configurável, construída para entregar
+        performance e privacidade sem compromissos.
+      </p>
+
+      <!-- Call to action -->
+      <div class="cta-group">
+        <!-- Baixar => abre o Github em nova aba -->
+        <a href="https://github.com/allyxzs/ARA-OS-CC-version" class="btn btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Baixar ARA OS (abre no GitHub)">
+          <i class="fas fa-download" aria-hidden="true"></i> Baixar ARA OS
+        </a>
+      </div>
+
+      <div class="feature-highlight" role="note">
+        <strong>Recursos exclusivos:</strong> interface intuitiva · alto desempenho · atualizações de segurança · suporte a apps nativos.
+      </div>
+    </div>
+
+    <!-- Screenshot do ARA OS -->
+    <div class="screenshot-container">
+      <img src="screenshot1.png" alt="Screenshot do ARA OS mostrando a interface do usuário">
+    </div>
+
+    <div class="compatibility-note">
+      Compatível com: Android-like apps, PWAs e aplicativos nativos
+    </div>
+  </div>
+
+  <!-- ===== Estilos e script do contador (insira no fim do body ou num arquivo .css/.js externo) ===== -->
+  <style>
+    /* Estilos do bloco AELIA - adaptáveis à estética do seu site */
+    .aelia-card { margin: 1rem 0 1.4rem 0; padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.02); box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+    .aelia-row { display: flex; gap: 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .aelia-text { flex: 1 1 420px; min-width: 260px; font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: var(--text, #eaeaea); }
+    .aelia-image { flex: 0 0 220px; display:flex; align-items:center; justify-content:center; }
+    .aelia-image img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+    .aelia-title { margin: 0 0 0.4rem 0; font-size: 1.15rem; letter-spacing: -0.2px; }
+    .aelia-desc { margin: 0 0 0.6rem 0; line-height:1.4; opacity: 0.95; }
+    .aelia-sub { margin: 0.6rem 0 0.3rem 0; font-size: 0.98rem; }
+    .aelia-list { margin: 0 0 0.6rem 1rem; padding: 0; list-style: disc; }
+    .aelia-list li { margin: 0.18rem 0; line-height: 1.35; }
+
+    .countdown { margin-top: 0.5rem; display:inline-block; padding: 0.45rem 0.6rem; border-radius: 8px; background: rgba(0,0,0,0.35); color: #fff; font-weight:600; font-family: "Segoe UI", Roboto, Arial, sans-serif; }
+    .countdown-label { font-size: 0.75rem; opacity: 0.9; margin-bottom: 0.25rem; }
+    .countdown-time { font-variant-numeric: tabular-nums; font-size: 1rem; letter-spacing: 0.6px; }
+
+    /* Responsividade: empilha em telas pequenas */
+    @media (max-width: 720px) {
+      .aelia-row { flex-direction: column-reverse; gap: 0.8rem; }
+      .aelia-image { width: 100%; }
+      .aelia-text { width: 100%; }
+    }
+  </style>
+
+  <script>
+    (function () {
+      // Alvo: terça-feira, 23 de setembro, 19:30 (horário de São Paulo -03:00)
+      // Use o offset -03:00 para garantir o timezone esperado no cliente.
+      var target = new Date('2025-09-23T19:30:00-03:00').getTime();
+      var display = document.getElementById('countdown-time');
+
+      function pad(n) { return n < 10 ? '0' + n : n; }
+
+      function updateCountdown() {
+        var now = Date.now();
+        var diff = target - now;
+
+        if (!display) return;
+
+        if (diff <= 0) {
+          display.textContent = '00d 00h 00m 00s';
+          // Você pode alterar a mensagem quando o evento começar:
+          // document.getElementById('aelia-countdown').querySelector('.countdown-label').textContent = 'Já começou!';
+          clearInterval(interval);
+          return;
+        }
+
+        var seconds = Math.floor(diff / 1000) % 60;
+        var minutes = Math.floor(diff / (1000 * 60)) % 60;
+        var hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+        display.textContent = pad(days) + 'd ' + pad(hours) + 'h ' + pad(minutes) + 'm ' + pad(seconds) + 's';
+      }
+
+      updateCountdown();
+      var interval = setInterval(updateCountdown, 1000);
+    })();
+  </script>
+</section>
     <!-- Seção Sobre -->
     <section class="section" id="sobre">
       <div class="section-header">
