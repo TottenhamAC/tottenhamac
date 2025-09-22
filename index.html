@@ -888,10 +888,10 @@
   </header>
 
   <main>
-<!-- Seção Inicial (Hero) - Atualizada com screenshot -->
+<!-- Seção Inicial (Hero) - Atualizada com feed de notícias -->
 <section class="hero section active" id="inicio" aria-labelledby="hero-title">
   <div class="hero__bg" aria-hidden="true"></div>
-
+  
   <div class="particles-container" aria-hidden="true">
     <div class="particle" style="top: 20%; left: 15%; width: 4px; height: 4px; animation-delay: 0s;"></div>
     <div class="particle" style="top: 60%; left: 75%; width: 6px; height: 6px; animation-delay: 1s;"></div>
@@ -899,144 +899,413 @@
     <div class="particle" style="top: 80%; left: 30%; width: 5px; height: 5px; animation-delay: 3s;"></div>
     <div class="particle" style="top: 30%; left: 85%; width: 4px; height: 4px; animation-delay: 4s;"></div>
   </div>
-
+  
   <div class="hero__content">
-    <div class="hero__text">
-      <span class="eyebrow">TOTTENHAM AC</span>
-
-      <!-- ==== INÍCIO: BLOCO AELIA ADICIONADO (colocado acima do título e do texto existente) ==== -->
-      <div class="aelia-card" role="region" aria-label="AELIA - descrição e contagem regressiva">
-        <div class="aelia-row">
-          <div class="aelia-text">
-            <h2 class="aelia-title">⚙️ AELIA — O Cérebro da ARA</h2>
-
-            <p class="aelia-desc">
-              <strong>AELIA</strong> (Advanced Enhanced Language Intelligence for ARA) é o processador
-              de linguagem natural que dá vida à ARA OS. Ela é o núcleo de inteligência da plataforma,
-              responsável por interpretar comandos, responder perguntas, gerar código e conduzir conversas
-              de forma natural.
+    <!-- Feed de Notícias -->
+    <div class="news-feed" role="region" aria-label="Feed de notícias">
+      <div class="news-date">Data: 22 de Setembro de 2025</div>
+      
+      <div class="news-card" aria-label="Anúncio da ARA OS 12">
+        <div class="news-card-content">
+          <div class="news-text">
+            <h2 class="news-title">🚀 ARA OS 12 - Em Breve!</h2>
+            <p class="news-excerpt">
+              Estamos animados em anunciar que a próxima versão do nosso sistema operacional, a ARA OS 12, 
+              chegará nos próximos meses. Como prévia, amanhã (Terça-feira, 23 de Setembro) liberaremos 
+              uma parte essencial da nova versão: o chatbot de geração 1 chamado <strong>AELIA 1</strong>.
             </p>
-
-            <h3 class="aelia-sub">✨ O que é a AELIA?</h3>
-            <ul class="aelia-list">
-              <li>Motor de diálogo da ARA OS.</li>
-              <li>Capaz de compreender contexto, histórico de conversa e informações do sistema.</li>
-              <li>Evolutiva: a cada versão, recebe melhorias em desempenho, memória e precisão.</li>
-              <li>Construída para ser local e confiável, mas expansível para integrações externas.</li>
-            </ul>
-
-            <h3 class="aelia-sub">🚀 Papel da AELIA na ARA OS</h3>
-            <ul class="aelia-list">
-              <li>Traduz dados técnicos em respostas humanas.</li>
-              <li>Gera código sob demanda a partir de descrições simples.</li>
-              <li>Atua como núcleo de automação e suporte técnico.</li>
-            </ul>
-
-            <!-- Contador (acima do CTA ou onde preferir) -->
-            <div class="countdown" aria-live="polite" aria-atomic="true" id="aelia-countdown" title="Contagem regressiva para 23 de setembro às 19:30 (horário de São Paulo)">
-              <div class="countdown-label">Faltam para terça-feira, 23 de setembro — 19:30</div>
-              <div class="countdown-time" id="countdown-time">—:—:—:—</div>
+            <div class="news-highlight">
+              <strong>Novidade:</strong> AELIA 1 será o primeiro componente da ARA OS 12 disponível para teste público.
             </div>
           </div>
-
-          <div class="aelia-image" aria-hidden="false">
-            <img src="araos4.png" alt="Imagem representativa da AELIA e ARA OS" />
+          
+          <div class="news-image-slider">
+            <div class="slider-container">
+              <img src="araos3.png" alt="Preview da ARA OS 12" class="slide active">
+              <img src="aelia1.png" alt="Interface do chatbot AELIA 1" class="slide">
+            </div>
+            <div class="slider-indicators">
+              <button class="indicator active" aria-label="Mostrar imagem da ARA OS 12"></button>
+              <button class="indicator" aria-label="Mostrar imagem do AELIA 1"></button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Contador regressivo -->
+        <div class="countdown-container">
+          <div class="countdown" aria-live="polite" aria-atomic="true" id="aelia-countdown" 
+               title="Contagem regressiva para 23 de setembro às 19:30 (horário de São Paulo)">
+            <div class="countdown-label">Lançamento do AELIA 1 em:</div>
+            <div class="countdown-time" id="countdown-time">—:—:—:—</div>
           </div>
         </div>
       </div>
-      <!-- ==== FIM: BLOCO AELIA ADICIONADO ==== -->
-
+    </div>
+    
+    <div class="hero__text">
+      <span class="eyebrow">TOTTENHAM AC</span>
+      
       <h1 id="hero-title">Sistema Operacional <span style="color: var(--accent-2);">ARA OS</span></h1>
-
-      <!-- Texto simplificado -->
+      
       <p class="lead">
         Uma plataforma móvel leve, segura e altamente configurável, construída para entregar
         performance e privacidade sem compromissos.
       </p>
-
-      <!-- Call to action -->
+      
       <div class="cta-group">
-        <!-- Baixar => abre o Github em nova aba -->
-        <a href="https://github.com/allyxzs/ARA-OS-CC-version" class="btn btn--primary" target="_blank" rel="noopener noreferrer" aria-label="Baixar ARA OS (abre no GitHub)">
+        <a href="https://github.com/allyxzs/ARA-OS-CC-version" class="btn btn--primary" target="_blank" 
+           rel="noopener noreferrer" aria-label="Baixar ARA OS (abre no GitHub)">
           <i class="fas fa-download" aria-hidden="true"></i> Baixar ARA OS
         </a>
       </div>
-
+      
       <div class="feature-highlight" role="note">
         <strong>Recursos exclusivos:</strong> interface intuitiva · alto desempenho · atualizações de segurança · suporte a apps nativos.
       </div>
     </div>
-
-    <!-- Screenshot do ARA OS -->
+    
     <div class="screenshot-container">
       <img src="screenshot1.png" alt="Screenshot do ARA OS mostrando a interface do usuário">
     </div>
-
+    
     <div class="compatibility-note">
       Compatível com: Android-like apps, PWAs e aplicativos nativos
     </div>
   </div>
-
-  <!-- ===== Estilos e script do contador (insira no fim do body ou num arquivo .css/.js externo) ===== -->
+  
   <style>
-    /* Estilos do bloco AELIA - adaptáveis à estética do seu site */
-    .aelia-card { margin: 1rem 0 1.4rem 0; padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.02); box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
-    .aelia-row { display: flex; gap: 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-    .aelia-text { flex: 1 1 420px; min-width: 260px; font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; color: var(--text, #eaeaea); }
-    .aelia-image { flex: 0 0 220px; display:flex; align-items:center; justify-content:center; }
-    .aelia-image img { max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
-    .aelia-title { margin: 0 0 0.4rem 0; font-size: 1.15rem; letter-spacing: -0.2px; }
-    .aelia-desc { margin: 0 0 0.6rem 0; line-height:1.4; opacity: 0.95; }
-    .aelia-sub { margin: 0.6rem 0 0.3rem 0; font-size: 0.98rem; }
-    .aelia-list { margin: 0 0 0.6rem 1rem; padding: 0; list-style: disc; }
-    .aelia-list li { margin: 0.18rem 0; line-height: 1.35; }
-
-    .countdown { margin-top: 0.5rem; display:inline-block; padding: 0.45rem 0.6rem; border-radius: 8px; background: rgba(0,0,0,0.35); color: #fff; font-weight:600; font-family: "Segoe UI", Roboto, Arial, sans-serif; }
-    .countdown-label { font-size: 0.75rem; opacity: 0.9; margin-bottom: 0.25rem; }
-    .countdown-time { font-variant-numeric: tabular-nums; font-size: 1rem; letter-spacing: 0.6px; }
-
-    /* Responsividade: empilha em telas pequenas */
-    @media (max-width: 720px) {
-      .aelia-row { flex-direction: column-reverse; gap: 0.8rem; }
-      .aelia-image { width: 100%; }
-      .aelia-text { width: 100%; }
+    /* Estilos do feed de notícias */
+    .news-feed {
+      margin-bottom: 2rem;
+      max-width: 100%;
+    }
+    
+    .news-date {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    
+    .news-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .news-card-content {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .news-text {
+      flex: 1;
+    }
+    
+    .news-title {
+      color: var(--accent-2);
+      margin-bottom: 0.8rem;
+      font-size: 1.3rem;
+    }
+    
+    .news-excerpt {
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    
+    .news-highlight {
+      background: rgba(80, 227, 194, 0.1);
+      border-left: 3px solid var(--accent-2);
+      padding: 0.8rem;
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .news-image-slider {
+      flex: 0 0 300px;
+      position: relative;
+    }
+    
+    .slider-container {
+      position: relative;
+      height: 200px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+    
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    
+    .slide.active {
+      opacity: 1;
+    }
+    
+    .slider-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+    }
+    
+    .indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .indicator.active {
+      background: var(--accent-2);
+    }
+    
+    .countdown-container {
+      text-align: center;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .countdown {
+      display: inline-block;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      font-weight: 600;
+    }
+    
+    .countdown-label {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      margin-bottom: 0.3rem;
+    }
+    
+    .countdown-time {
+      font-variant-numeric: tabular-nums;
+      font-size: 1.2rem;
+      letter-spacing: 0.8px;
+      color: var(--accent-2);
+    }
+    
+    /* Estilos existentes da seção Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 2rem;
+      overflow: hidden;
+    }
+    
+    .hero__bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 30%, rgba(74, 144, 226, 0.1), transparent 50%),
+                  radial-gradient(circle at 70% 70%, rgba(80, 227, 194, 0.1), transparent 50%);
+      z-index: -2;
+    }
+    
+    .particles-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    
+    .particle {
+      position: absolute;
+      background-color: var(--accent-2);
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: float 6s infinite ease-in-out;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
+      50% { transform: translateY(-20px) scale(1.1); opacity: 0.9; }
+    }
+    
+    .hero__content {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent-1);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    #hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+    
+    .lead {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      opacity: 0.9;
+    }
+    
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn--primary {
+      background: var(--accent-1);
+      color: white;
+    }
+    
+    .btn--primary:hover {
+      background: #3a7bc8;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+    }
+    
+    .feature-highlight {
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+    
+    .screenshot-container {
+      margin-top: 3rem;
+      text-align: center;
+    }
+    
+    .screenshot-container img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+    
+    .compatibility-note {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .news-card-content {
+        flex-direction: column;
+      }
+      
+      .news-image-slider {
+        width: 100%;
+        flex: none;
+      }
+      
+      #hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .lead {
+        font-size: 1.1rem;
+      }
     }
   </style>
-
+  
   <script>
-    (function () {
-      // Alvo: terça-feira, 23 de setembro, 19:30 (horário de São Paulo -03:00)
-      // Use o offset -03:00 para garantir o timezone esperado no cliente.
-      var target = new Date('2025-09-23T19:30:00-03:00').getTime();
-      var display = document.getElementById('countdown-time');
-
+    // Script para alternar as imagens do slider
+    document.addEventListener('DOMContentLoaded', function() {
+      const slides = document.querySelectorAll('.slide');
+      const indicators = document.querySelectorAll('.indicator');
+      let currentSlide = 0;
+      
+      function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+        
+        slides[index].classList.add('active');
+        indicators[index].classList.add('active');
+        
+        currentSlide = index;
+      }
+      
+      // Alternar slides automaticamente a cada 5 segundos
+      setInterval(() => {
+        let nextSlide = (currentSlide + 1) % slides.length;
+        showSlide(nextSlide);
+      }, 5000);
+      
+      // Controles manuais dos indicadores
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          showSlide(index);
+        });
+      });
+      
+      // Contador regressivo
+      const target = new Date('2025-09-23T19:30:00-03:00').getTime();
+      const display = document.getElementById('countdown-time');
+      
       function pad(n) { return n < 10 ? '0' + n : n; }
-
+      
       function updateCountdown() {
-        var now = Date.now();
-        var diff = target - now;
-
+        const now = Date.now();
+        const diff = target - now;
+        
         if (!display) return;
-
+        
         if (diff <= 0) {
           display.textContent = '00d 00h 00m 00s';
-          // Você pode alterar a mensagem quando o evento começar:
-          // document.getElementById('aelia-countdown').querySelector('.countdown-label').textContent = 'Já começou!';
+          document.querySelector('.countdown-label').textContent = 'AELIA 1 já está disponível!';
           clearInterval(interval);
           return;
         }
-
-        var seconds = Math.floor(diff / 1000) % 60;
-        var minutes = Math.floor(diff / (1000 * 60)) % 60;
-        var hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-
+        
+        const seconds = Math.floor(diff / 1000) % 60;
+        const minutes = Math.floor(diff / (1000 * 60)) % 60;
+        const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        
         display.textContent = pad(days) + 'd ' + pad(hours) + 'h ' + pad(minutes) + 'm ' + pad(seconds) + 's';
       }
-
+      
       updateCountdown();
-      var interval = setInterval(updateCountdown, 1000);
-    })();
+      const interval = setInterval(updateCountdown, 1000);
+    });
   </script>
 </section>
     <!-- Seção Sobre -->
